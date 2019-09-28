@@ -9,6 +9,13 @@ If you require different templates for different post types, then simply duplica
 
 Alternatively, notice that index.php, category.php and single.php have a post_class() function-call that inserts different classes for different post types into the section tag (e.g. <section id="" class="format-aside">). Therefore you can simply use e.g. .format-aside {your styles} in css/b4st.css style the different formats in different ways.
 */
+add_filter("the_content", "blog_page_content_limit");
+
+function blog_page_content_limit($content)
+{
+  // Take the existing content and return a subset of it
+  return substr($content, 0, 300);
+}
 ?>
 
   <?php if(have_posts()): while(have_posts()): the_post();?>
