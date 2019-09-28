@@ -9,13 +9,10 @@ If you require different templates for different post types, then simply duplica
 
 Alternatively, notice that index.php, category.php and single.php have a post_class() function-call that inserts different classes for different post types into the section tag (e.g. <section id="" class="format-aside">). Therefore you can simply use e.g. .format-aside {your styles} in css/b4st.css style the different formats in different ways.
 */
-add_filter("the_content", "blog_page_content_limit");
 
-function blog_page_content_limit($content)
-{
-  // Take the existing content and return a subset of it
-  return substr($content, 0, 300);
-}
+// trim content to length and add readmore link
+
+$content = mb_strimwidth(get_the_content(), 0, 300, '<span class="blog_readmore"><a href="' . get_permalink() . '">[Read more]</a></span>');
 ?>
 
   <?php if(have_posts()): while(have_posts()): the_post();?>
@@ -35,7 +32,7 @@ function blog_page_content_limit($content)
     </header>
     <section>
       <?php the_post_thumbnail(); ?>
-      <?php the_content( __( '&hellip; ' . __('Continue reading', 'b4st' ) . ' <i class="fa fa-arrow-right"></i>', 'b4st' ) ); ?>
+      <?php echo $content; ?>
     </section>
     <footer>
       <p class="text-muted" style="margin-bottom: 20px;">
