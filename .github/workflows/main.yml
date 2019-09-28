@@ -1,0 +1,17 @@
+action "Deploy with rsync" {
+  uses = "maxheld83/rsync@v0.1.1"
+  needs = "Write sha"
+  secrets = [
+    "SSH_PRIVATE_KEY",
+    "SSH_PUBLIC_KEY"
+  ]
+  env = {
+    HOST_NAME = "foo.example.com"
+    HOST_IP = "111.111.11.111"
+    HOST_FINGERPRINT = "ecdsa-sha2-nistp256 AAAA..."
+  }
+  args = [
+    "$GITHUB_WORKSPACE/index.html",
+    "alice@$HOST_NAME:path/to/destination"
+  ]
+}
