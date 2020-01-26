@@ -10,61 +10,77 @@ If you require different templates for different post types, then simply duplica
 Alternatively, notice that index.php, category.php and single.php have a post_class() function-call that inserts different classes for different post types into the section tag (e.g. <section id="" class="format-aside">). Therefore you can simply use e.g. .format-aside {your styles} in css/b4st.css style the different formats in different ways.
 */
 ?>
-<div class="container">
-<div class="row">
 
-  <?php if(have_posts()): while(have_posts()): the_post();?>
+
+
+<?php if (have_posts()): while (have_posts()): the_post();?>
+<div class="jumbotron bg-dark text-light">
   <article role="article" id="post_<?php the_ID()?>">
     <header>
-      <h1 class="display-4 mb-3">
-        <a href="<?php the_permalink(); ?>">
-        <?php the_field( 'heading' ); ?>
-        </a>
-      </h1>
-      <?php $heading_image = get_field( 'heading_image' ); ?>
-    <?php if ( $heading_image ) { ?>
-        <img src="<?php echo $heading_image['url']; ?>" class="img-fluid" alt="<?php echo $heading_image['alt']; ?>" />
-    <?php } ?>
-    <p>
-        <?php the_field( 'heading_excerpt' ); ?>
-    </p>
+      <div class="container">
+        <div class="row">
+          <div class="col col-md-6">
+            <h1 class="display-4 mb-3">
+                <?php the_field('heading'); ?>
+            </h1>
+            <p>
+              <?php the_field('heading_excerpt'); ?>
+            </p>
+          </div>
+          <div class="col col-md-6">
+            <?php $heading_image = get_field('heading_image'); ?>
+            <?php if ($heading_image) { ?>
+            <img src="<?php echo $heading_image['url']; ?>" class="img-fluid"
+              alt="<?php echo $heading_image['alt']; ?>" />
+            <?php } ?>
+          </div>
+        </div>
+      </div>
+
+
+
     </header>
+  </article>
+</div>
+</div>
+<div class="container">
+  <div class="row">
     <section>
-    <div class="row">
+      <div class="row">
         <?php
         $args = array(
         'post_type'   => 'post',
         'post_status' => 'publish',
         );
         
-        $blog_posts = new WP_Query( $args );
-        if( $blog_posts->have_posts() ) :
+        $blog_posts = new WP_Query($args);
+        if ($blog_posts->have_posts()) :
         ?>
 
-            <?php
-            while( $blog_posts->have_posts() ) :
+        <?php
+            while ($blog_posts->have_posts()) :
                 $blog_posts->the_post();
                 ?>
-                <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title"><a href="<?php echo get_permalink(); ?>"><?php echo get_the_title();?></a></h5>
-                    <p class="card-text"><?php the_tags(); ?></p>
-                </div>
-                </div>
-                <?php
+        <div class="card mx-auto" style="width: 17rem;">
+          <div class="card-body">
+            <h5 class="card-title"><a href="<?php echo get_permalink(); ?>"><?php echo get_the_title();?></a></h5>
+            <p class="card-text"><?php the_tags(); ?></p>
+          </div>
+        </div>
+        <?php
             endwhile;
             wp_reset_postdata();
             ?>
 
         <?php
         else :
-        esc_html_e( 'No posts to display! Something is fucked up.', 'text-domain' );
+        esc_html_e('No posts to display! Something is fucked up.', 'text-domain');
         endif;
         ?>
-    </div>
+      </div>
     </section>
-  </article>
+    </article>
   </div>
 </div>
-  <?php endwhile; ?>
-  <?php else: wp_redirect(get_bloginfo('url').'/404', 404); exit; endif; ?>
+<?php endwhile; ?>
+<?php else: wp_redirect(get_bloginfo('url').'/404', 404); exit; endif; ?>
