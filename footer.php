@@ -4,7 +4,7 @@
   </div>
 
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 text-center">
       <p class="text-center"><img
           src="https://img.shields.io/date/<?php echo time(); ?>.svg?label=build%20date&style=flat-square"
           alt="build date"> <img
