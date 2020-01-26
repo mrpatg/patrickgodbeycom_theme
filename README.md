@@ -1,6 +1,6 @@
-#b4st - A Bootstrap 4 Starter Theme, for WordPress
+#Theme for PatrickGodbey.com - based on b4st
 
-*Version 1.0.0*
+*Version 2.5.0*
 
 ------------------
 
@@ -26,18 +26,3 @@
 
 * **Navbar with dropdowns (child menus)** – a [custom walker nav menu class](https://github.com/SimonPadbury/b4st/blob/master/functions/navbar.php) has been built to handle the dropdowns.
 
-* Sidebar-widget-area is optional. If no widgets, then the sidebar will not be shown (main column automatically becomes full width).
-
-* A starter CSS theme – `/theme/css/b4st.css`, enqueued. (Note: do not put your styles in `styles.css`.)
-
-* WordPress menu and WordPress search form in the Bootstrap 4 `.navbar` (Note: Bootstrap 4 navbar dropdowns supports only two levels of menu links (no sub-sub menus).
-
-* Bootstrap pagination for blog index and blog category pages.
-
-* Bootstrap pagination for posts/pages if split over a series of 'pages'.
-
-* Visual editor stylesheet – into which the same Bootstrap 4 and starter CSS theme are preloaded by `@import`, so that what you see in the visual editor is (mostly!) what you get at the front end (WYSI(M!)WYG). E.g. you will see the theme's typpography in the WordPress Post/Page editor, and you can use Bootstrap CSS in the editor – but its width will not be the same as your article column width in the front end.
-
-* [UNLICENCE](http://unlicense.org) (open source).
-
-Just a little something to help you kick off your next project. :-)
