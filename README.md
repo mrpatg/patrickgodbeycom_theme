@@ -1,4 +1,4 @@
-#Theme for PatrickGodbey.com - based on b4st
+# Theme for PatrickGodbey.com - based on b4st
 
 *Version 2.5.0*
 
