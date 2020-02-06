@@ -1,6 +1,6 @@
 # Theme for PatrickGodbey.com - based on b4st
 
-*Version 2.5.1*
+*Version 2.5.3*
 
 ------------------
 
