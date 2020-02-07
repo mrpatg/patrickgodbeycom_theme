@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
-	<title><?php wp_title('&raquo;','true','right'); ?> -|- <?php bloginfo('name'); ?></title>
+	<title><?php wp_title('&raquo;','true','right'); ?> | <?php bloginfo('name'); ?></title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
