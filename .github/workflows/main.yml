@@ -13,4 +13,4 @@ jobs:
         username: ${{ secrets.USER }}
         password: ${{ secrets.PASS }}
         port: ${{ secrets.PORT }}
-        script: whoami
+        script: cd /var/www/build.patrickgodbey.com/htdocs/wp-content/themes/patrickgodbeycom_theme; git pull;
