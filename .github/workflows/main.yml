@@ -14,4 +14,4 @@ jobs:
           host: ${{ secrets.HOST }}
           user: github
           pass: ${{ secrets.PASS }}
-          args: "-tt -v"
+          args: "-tt -vv"
