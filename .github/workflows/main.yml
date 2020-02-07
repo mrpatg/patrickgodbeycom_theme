@@ -9,7 +9,7 @@ jobs:
         uses: mrpatg/ssh-action@master
         with:
           command: |
-            cd /var/www/build.patrickgodbey.com/htdocs/wp-content/themes/patrickgodbey_theme
+            cd /var/www/build.patrickgodbey.com/htdocs/wp-content/themes/patrickgodbeycom_theme
             git pull
           host: ${{ secrets.HOST }}
           user: github
