@@ -1,36 +1,18 @@
-name: 'Remote SSH Commands'
-description: 'Run remote ssh commands'
-author: 'fifsky@gmail.com'
-inputs:
-  command:
-    description: "Command to execute on the remote server."
-    required: true
-  host:
-    description: "Hostname or IP address of the server."
-    required: false
-    default: "localhost"
-  user:
-    description: "Username for authentication."
-    required: false
-    default: "root"
-  port:
-    description: "Port number of the server."
-    required: false
-    default: "22"
-  key:
-    description: "File Location or string that contains a private key for either key-based or hostbased user authentication (OpenSSH format)"
-    required: true
-  pass:
-    description: "Password for authentication."
-    required: false
-  args:
-    description: "SSH parameters for example: -tt."
-    required: false
+name: Theme Update
+on: push
 
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
-
-branding:
-  color: "green"
-  icon: "lock"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ls -a via OPEN SSH Private Key
+        uses: mrpatg/ssh-action@master
+        with:
+          command: |
+            cd /var/www/build.patrickgodbey.com/htdocs/wp-content/themes/patrickgodbey_theme
+            git pull
+          host: ${{ secrets.HOST }}
+          user: github
+          key: ${{ secrets.PRIVATE_KEY}}
+#          pass: ${{ secrets.PASS }}
+          args: "-tt -vvv"
