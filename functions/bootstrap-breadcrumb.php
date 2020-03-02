@@ -30,7 +30,7 @@ function custom_get_category_parents( $id, $visited = array() ) {
 function bootstrap_breadcrumb() {
   global $post;
   
-  $html = '<div class="breadcrumb-bar navbar bg-white sticky-top"><ol class="breadcrumb">';
+  $html = ' <div class="container-fluid"><div class="container"> <div class="breadcrumb-bar navbar bg-white sticky-top"><ol class="breadcrumb">';
   
   if ( is_front_page() ) {
     $html .= '<li class="breadcrumb-item active">Home</li>';
@@ -127,7 +127,7 @@ function bootstrap_breadcrumb() {
     
   }
   
-  $html .= '</ol></div>';
+  $html .= '</ol></div></div></div>';
   // cutoff threshold set in site options
   $cutoff_threshold = get_field( 'breadcrumb_cut_off_threshold', 'option' );
   

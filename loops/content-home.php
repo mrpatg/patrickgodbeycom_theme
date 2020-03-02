@@ -13,71 +13,75 @@ Alternatively, notice that index.php, category.php and single.php have a post_cl
 
 
 
-<?php if (have_posts()): while (have_posts()): the_post();?>
-<div class="jumbotron bg-light bg-jumbotron text-dark">
-  <article role="article" id="post_<?php the_ID()?>">
-    <header>
+<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+    <div class="jumbotron bg-light bg-jumbotron text-dark">
+      <article role="article" id="post_<?php the_ID() ?>">
+        <header>
+          <div class="container">
+            <div class="row">
+              <div class="col col-md-6">
+                <h1 class="display-4 mb-3">
+                  <?php the_field('heading'); ?>
+                </h1>
+                <p>
+                  <?php the_field('heading_excerpt'); ?>
+                </p>
+              </div>
+              <div class="col col-md-6">
+                <?php $heading_image = get_field('heading_image'); ?>
+                <?php if ($heading_image) { ?>
+                  <img src="<?php echo $heading_image['url']; ?>" class="img-fluid" alt="<?php echo $heading_image['alt']; ?>" />
+                <?php } ?>
+              </div>
+            </div>
+          </div>
+        </header>
+      </article>
+    </div>
+    </div>
+    <div class="container-fliud bg-white">
       <div class="container">
+
         <div class="row">
-          <div class="col col-md-6">
-            <h1 class="display-4 mb-3">
-                <?php the_field('heading'); ?>
-            </h1>
-            <p>
-              <?php the_field('heading_excerpt'); ?>
-            </p>
-          </div>
-          <div class="col col-md-6">
-            <?php $heading_image = get_field('heading_image'); ?>
-            <?php if ($heading_image) { ?>
-            <img src="<?php echo $heading_image['url']; ?>" class="img-fluid"
-              alt="<?php echo $heading_image['alt']; ?>" />
-            <?php } ?>
-          </div>
-        </div>
-      </div>
-    </header>
-  </article>
-</div>
-</div>
-<div class="container">
-  <div class="row">
-    <section>
-      <div class="row">
-        <?php
-        $args = array(
-        'post_type'   => 'post',
-        'post_status' => 'publish',
-        );
-        
-        $blog_posts = new WP_Query($args);
-        if ($blog_posts->have_posts()) :
-        ?>
+          <section>
+            <div class="row">
+              <?php
+              $args = array(
+                'post_type'   => 'post',
+                'post_status' => 'publish',
+              );
 
-        <?php
-            while ($blog_posts->have_posts()) :
-                $blog_posts->the_post();
+              $blog_posts = new WP_Query($args);
+              if ($blog_posts->have_posts()) :
+              ?>
+
+                <?php
+                while ($blog_posts->have_posts()) :
+                  $blog_posts->the_post();
                 ?>
-        <div class="card mx-auto" style="width: 17rem;">
-          <div class="card-body">
-            <h5 class="card-title"><a href="<?php echo get_permalink(); ?>"><?php echo get_the_title();?></a></h5>
-            <p class="card-text"><?php the_tags(); ?></p>
-          </div>
-        </div>
-        <?php
-            endwhile;
-            wp_reset_postdata();
-            ?>
+                  <div class="card mx-auto" style="width: 17rem;">
+                    <div class="card-body">
+                      <h5 class="card-title"><a href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></h5>
+                      <p class="card-text"><?php the_tags(); ?></p>
+                    </div>
+                  </div>
+                <?php
+                endwhile;
+                wp_reset_postdata();
+                ?>
 
-        <?php
-        else :
-        esc_html_e('No posts to display! Something is fucked up.', 'text-domain');
-        endif;
-        ?>
+              <?php
+              else :
+                esc_html_e('No posts to display! Something is fucked up.', 'text-domain');
+              endif;
+              ?>
+            </div>
+          </section>
+          </article>
+        </div>
       </div>
-    </section>
-    </article>
-  </div>
-</div>
-<?php endwhile; ?>
-<?php else: wp_redirect(get_bloginfo('url').'/404', 404); exit; endif; ?>
+    </div>
+  <?php endwhile; ?>
+<?php else : wp_redirect(get_bloginfo('url') . '/404', 404);
+  exit;
+endif; ?>

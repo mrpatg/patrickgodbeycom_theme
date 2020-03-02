@@ -14,8 +14,8 @@
     <div class="container">
       <div class="row bg-dark ">
         <div class="col">
-          <img src="/wp-content/themes/patrickgodbeycom_theme/theme/img/patrickgodbey_logicon.png" alt="Patrick Godbey" class="src">
-          <a class="navbar-brand" href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
+          <img src="/wp-content/uploads/2020/03/patrickgodbey_logicon.png" alt="Patrick Godbey" class="src">
+          <a class="navbar-brand align-middle" href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
         </div>
         <div class="col">
           <nav class="navbar navbar-expand-md navbar-dark ">
