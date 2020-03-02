@@ -14,7 +14,7 @@ Alternatively, notice that index.php, category.php and single.php have a post_cl
 
 
 <?php if (have_posts()): while (have_posts()): the_post();?>
-<div class="jumbotron bg-dark text-light">
+<div class="jumbotron bg-light bg-jumbotron text-dark">
   <article role="article" id="post_<?php the_ID()?>">
     <header>
       <div class="container">
@@ -36,9 +36,6 @@ Alternatively, notice that index.php, category.php and single.php have a post_cl
           </div>
         </div>
       </div>
-
-
-
     </header>
   </article>
 </div>
