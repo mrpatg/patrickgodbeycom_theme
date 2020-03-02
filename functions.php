@@ -11,7 +11,6 @@ All the functions are in the PHP pages in the `functions/` folder.
 	require get_template_directory() . '/functions/search-widget.php';
 	require get_template_directory() . '/functions/index-pagination.php';
 	require get_template_directory() . '/functions/split-post-pagination.php';
-	require get_template_directory() . '/functions/feedback.php';
 	require get_template_directory() . '/functions/remove-query-string.php';
 	require get_template_directory() . '/functions/acf-admin-page.php';
 	require get_template_directory() . '/functions/bootstrap-breadcrumb.php';
